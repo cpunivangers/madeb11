@@ -1,0 +1,28 @@
+---
+
+- name: xournalpp | HREF
+  shell: |
+    BRANCH=$(curl -sI "https://github.com/xournalpp/xournalpp/releases/latest" | dos2unix | grep "location: " | cut -d" " -f2)
+    echo "https://github.com$(curl -s "$BRANCH" | grep "href=" | grep ".deb" | grep "Debian" | sed -n 's,.* href="\(.*\)" rel.*$,\1,p')"
+  #~ args:
+    #~ warn: false
+  become_user: '{{ ansible_facts.env.SUDO_USER }}'
+  register: retour_href
+  changed_when: false
+
+- name: xournalpp | Version dispo {{ retour_href.stdout }}
+  shell: basename '{{ retour_href.stdout }}' | cut -d_ -f1 | cut -d- -f2
+  #~ args:
+    #~ warn: false
+  become_user: '{{ ansible_facts.env.SUDO_USER }}'
+  register: retour_vers
+  changed_when: false
+
+- name : xournalpp | Version {{ retour_vers.stdout }}
+  set_fact:
+    pkg:
+      name: xournalpp
+      url: '{{ retour_href.stdout }}'
+      vers: '{{ retour_vers.stdout }}'
+
+- import_tasks: url_pkg.yml

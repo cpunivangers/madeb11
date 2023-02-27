@@ -1,0 +1,45 @@
+---
+
+- import_tasks: libreoffice_bpo.yml
+
+- name: Bureautique | installation des paquets
+  apt:
+    state: present
+    name:
+    # Suite bureautique
+    - libreoffice
+    - libreoffice-gtk3
+    - libreoffice-gnome
+    - libreoffice-l10n-fr
+    - libreoffice-help-fr
+    - hyphen-fr
+    - libreoffice-style-sifr
+    #~ bloque si version bpo installée - libreoffice-pdfimport
+    - libreoffice-report-builder
+    # Polices
+    - ttf-mscorefonts-installer
+    - fonts-liberation
+    - fonts-crosextra-carlito
+    - fonts-crosextra-caladea
+    - fonts-linex
+# completer avec les polices windows >= vista
+    - gnome-font-viewer
+    # Pdf
+    - evince
+    - pdfsam
+    - pdfshuffler
+    - bookletimposer
+    - pdf-presenter-console
+  tags: bureautique
+
+- import_tasks: ghostwriter_bpo.yml
+
+- import_tasks: markdown.yml
+
+- import_tasks: policevista.yml
+
+- import_tasks: grammalecte.yml
+
+- import_tasks: modeles.yml
+
+- import_tasks: xournalpp_bpo.yml
