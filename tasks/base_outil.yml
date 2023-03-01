@@ -1,0 +1,174 @@
+---
+
+- name: outils de base | bash ...
+  apt:
+    state: present
+    name:
+    - bash-completion
+    - command-not-found
+    - dialog
+    - yad
+    - zenity
+    - xmlstarlet
+    - libnotify-bin
+    # Voir l'espace occupé en ligne de commande
+    - ncdu
+    # Voir qui trafic sur internet en ligne de commande
+    - nethogs
+    # Voir qui Ecrit/lit sur le disque en ligne de commande
+    - iotop
+    # Communication avec x11 pour Debian 11
+    - dbus-x11
+    # Nettoyage nom de fichiers
+    - detox
+    
+- name: outils de base | gestion des paquets
+  apt:
+    state: present
+    name:
+    - software-properties-gtk
+    - gnome-software
+    - gnome-packagekit
+    - debconf-utils
+    - gdebi
+    - apt-show-versions
+    - apt-rdepends
+    - unattended-upgrades
+    - wget
+    - curl
+    
+- name: outils de base | XDG
+  apt:
+    state: present
+    name:
+    - xdg-user-dirs
+    - xdg-user-dirs-gtk
+
+- name: outils de base | Vérification hash
+  apt:
+    state: present
+    name:
+    - gtkhash
+- name: outils de base | maj horloge
+  apt:
+    state: present
+    name:  
+    - ntpdate
+- name: outils de base | Archivage
+  apt:
+    state: present
+    name:  
+    - p7zip-full
+    - p7zip-rar
+    - unrar
+    - file-roller
+- name: outils de base | Infos Matériel
+  apt:
+    state: present
+    name:      
+    - lshw
+    - hardinfo
+    - inxi
+    - screenfetch
+    - neofetch
+    - os-prober
+    - laptop-detect
+    # Disque
+    - gnome-disk-utility
+    - ethtool
+    - rfkill
+    
+- name: outils de base | Matériel
+  apt:
+    state: present
+    name:          
+    - firmware-linux-free
+    - firmware-linux-nonfree
+    - firmware-iwlwifi
+    - printer-driver-all
+    - firmware-realtek
+    # Video
+    - xserver-xorg-video-all
+    # Périphériques usb multimedia
+    - mtp-tools
+    - libmtp-runtime
+    # Montage usb system de fichiers exFAT
+    - exfat-utils
+    - exfat-fuse
+      
+- name: outils de base | Sauvegarde
+  apt:
+    state: present
+    name:          
+    - grsync
+    - deja-dup
+    # groupes/utilisateurs
+    - gnome-system-tools
+    - whois
+    # Montage distant
+    - gvfs-backends
+- name: outils de base | Montage partages windows
+  apt:
+    state: present
+    name:           
+    - cifs-utils
+    - keyutils
+    - gvfs-bin
+    - gvfs-fuse
+    - smbclient
+    - dos2unix
+
+- name: outils de base | Affichage multi-ecrans
+  apt:
+    state: present
+    name:       
+    - arandr
+        
+- name: outils de base | Gestion des imprimantes
+  apt:
+    state: present
+    name:       
+    - system-config-printer
+    - cups-pdf
+    
+- name: outils de base | Gestion connections réseaux
+  apt:
+    state: present
+    name:           
+    - network-manager-gnome
+    
+- name: outils de base | openconnect
+  apt:
+    state: present
+    name:           
+    - openconnect
+    - network-manager-openconnect-gnome
+    #~ default_release: bullseye-backports
+
+- name: outils de base | keepassxc
+  apt:
+    state: latest
+    name:           
+    - keepassxc
+    #~ default_release: bullseye-backports
+
+- name: outils de base | Post-it
+  apt:
+    state: latest
+    name:           
+    - xpad
+    
+- name: outils de base | ssh
+  apt:
+    state: present
+    name:           
+    - openssh-client
+    
+- name: outils de base | Documentation Debian
+  apt:
+    state: present
+    name:           
+    - debian-reference-fr
+  tags: outil
+
+- import_tasks: laptop.yml

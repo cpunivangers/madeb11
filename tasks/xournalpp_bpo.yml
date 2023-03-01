@@ -1,0 +1,8 @@
+---
+
+- name: xournalpp bpo
+  apt:
+    state: latest
+    name:
+    - xournalpp
+    default_release: bullseye-backports

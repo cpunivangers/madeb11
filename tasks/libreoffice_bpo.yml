@@ -1,0 +1,14 @@
+---
+
+- name: libreoffice bpo
+  apt:
+    state: latest
+    name:
+    - libreoffice
+    - libreoffice-gtk3
+    - libreoffice-gnome
+    - libreoffice-l10n-fr
+    - libreoffice-help-fr
+    - libreoffice-style-*
+    - libreoffice-report-builder
+    default_release: bullseye-backports

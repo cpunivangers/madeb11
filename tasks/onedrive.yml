@@ -1,0 +1,16 @@
+---
+
+- name: OneDrive | import apt key
+  apt_key:
+    url: https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/Debian_11/Release.key
+    state: present
+
+- name: OneDrive | depot
+  apt_repository:
+    repo: deb https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/Debian_11/ ./
+    filename: onedrive
+    state: present
+
+- name: OneDrive | install onedrive
+  apt:
+    name: onedrive

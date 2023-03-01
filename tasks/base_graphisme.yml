@@ -1,0 +1,32 @@
+---
+
+- name: Graphisme
+  apt:
+    state: present
+    name:
+    # Gestionnaire de photos
+    - gthumb
+    # Capture d'écran
+    - flameshot
+    # Outil Graphisme et svg
+    - imagemagick
+    - webp
+    - librsvg2-bin
+    - eog
+    # Graphisme simple
+    - photoflare
+    - drawing
+    - lazpaint-gtk2
+    # Numérisation
+    - simple-scan
+    - gimagereader
+    - tesseract-ocr-fra
+
+
+- name: Graphisme bpo
+  apt:
+    state: latest
+    name:
+    # Outil Graphisme et svg
+    - inkscape
+    default_release: bullseye-backports

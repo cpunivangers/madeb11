@@ -1,0 +1,8 @@
+---
+
+- name: kdenlive bpo
+  apt:
+    state: latest
+    name:
+    - kdenlive
+    default_release: bullseye-backports

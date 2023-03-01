@@ -1,0 +1,12 @@
+---
+
+- name: ansible | sshpass
+  apt:
+    name: sshpass
+
+#~ - name: ansible | /var/log/ansible
+  #~ file:
+    #~ path: /var/log/ansible
+    #~ group: 'sudo'
+    #~ mode: '0775'
+    #~ state: directory
