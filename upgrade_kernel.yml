@@ -1,0 +1,21 @@
+---
+# Pour les machines très récentes
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: upgrade kernel bullseye-backports
+    apt:
+      default_release: bullseye-backports
+      state: latest
+      name:
+      - linux-image-amd64
+      - linux-headers-amd64
+      - firmware-linux
+      - firmware-linux-nonfree
+      - firmware-iwlwifi
+      - intel-microcode
+      #~ - systemd
+      #~ - libpam-systemd
+      
