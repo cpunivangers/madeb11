@@ -1,0 +1,45 @@
+---
+
+- name: installation des paquets Internet
+  apt:
+    state: present
+    name:
+    # Navigateur web
+    - firefox-esr
+    - firefox-esr-l10n-fr
+    - chromium
+    - chromium-l10n
+    # Extensions : bloqueur pub ... fonctionnement non fiable à revoir !!! Voir plus bas !
+#    - webext-ublock-origin
+#    - webext-privacy-badger
+#    - webext-https-everywhere
+#    - webext-bulk-media-downloader
+#    - webext-lightbeam
+    # Client messagerie
+    - thunderbird
+    - thunderbird-l10n-fr
+  tags: internet
+
+#~ - include: flashplayer.yml
+
+- name: Suppression Extensions Navigateur fonctionnement non fiable
+  apt:
+    state: absent
+    purge: yes
+    name:
+    - webext-ublock-origin
+    - webext-privacy-badger
+    - webext-https-everywhere
+    - webext-bulk-media-downloader
+    
+- name: Internet | yt-dlp
+  apt:
+    state: present
+    name:
+    - yt-dlp
+
+- name: Internet | wifi-qr
+  apt:
+    state: present
+    name:
+    - wifi-qr

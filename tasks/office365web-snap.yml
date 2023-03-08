@@ -1,0 +1,21 @@
+---
+
+- name: Offife365 web | snapd
+  apt:
+    name: snapd
+    
+- name: Offife365 web | core
+  snap:
+    name: core
+
+- name: Offife365 web | install snap office365webdesktop
+  snap:
+    name: office365webdesktop
+    channel: beta
+
+- name: Offife365 web | correction pour affichage des applications dans les menus
+  file:
+    src: /etc/profile.d/apps-bin-path.sh
+    dest: /etc/X11/Xsession.d/99snap
+    state: link
+    
