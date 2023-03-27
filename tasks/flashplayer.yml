@@ -1,0 +1,38 @@
+---
+
+- name: /opt/flasplayer 
+  copy:
+    src: flashplayer
+    dest: /opt/
+  tags: flashplayer
+
+
+- name: flashplayer ppapi
+  command: sh deb_flash_ppapi.sh
+  args:
+    chdir: /opt/flashplayer/
+  changed_when: False
+  tags: flashplayer
+
+- name: flashplayer npapi
+  command: sh deb_flash_npapi.sh
+  args:
+    chdir: /opt/flashplayer/
+  changed_when: False
+  tags: flashplayer
+
+- name: flashplayer projector
+  command: sh deb_flash_projector.sh
+  args:
+    chdir: /opt/flashplayer/
+  changed_when: False
+  tags: flashplayer
+
+- name: flashplayer projector application
+  copy:
+    src: /opt/flashplayer/flashplayer.desktop
+    remote_src: true
+    dest: /usr/share/applications/
+    mode: 0755
+  tags: flashplayer
+
