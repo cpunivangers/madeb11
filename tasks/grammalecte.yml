@@ -1,0 +1,29 @@
+---
+# Liste des extensions
+# unopkg list --shared
+
+## Le site grammalecte.net ne fonctionne plus 05/15/2022
+#~ - name: Grammalecte extension LibreOffice | HREF
+  #~ shell: curl -sL "https://grammalecte.net/#download" | grep "href" | grep "oxt" | head -1 | sed -n 's,.* href="\(.*\)">.*$,\1,p'
+  #~ args:
+    #~ warn: false
+  #~ become_user: '{{ ansible_facts.env.SUDO_USER }}'
+  #~ register: retour_href
+  #~ changed_when: false
+
+#~ - name: Grammalecte extension LibreOffice | Téléchargement {{ retour_href.stdout }}
+  #~ get_url:
+    #~ url: 'https://grammalecte.net/{{ retour_href.stdout }}'
+    #~ dest: /tmp/Grammalecte-fr.oxt
+
+- name: Grammalecte extension LibreOffice | Copy
+  copy:
+    src: Divers/Grammalecte-fr.oxt
+    dest: /tmp/Grammalecte-fr.oxt
+  
+- name: Grammalecte extension LibreOffice | Add extension
+  shell: unopkg add --force --shared /tmp/Grammalecte-fr.oxt
+  #~ args:
+    #~ warn: false
+  changed_when: false
+

@@ -1,0 +1,28 @@
+#!/bin/sh
+ 
+# 08/2020
+# christian.pottier@univ-angers.fr
+# 25/10/2022 mise à jour non interactiev
+
+echo 'MaMaj : Script pour la mise à jour de votre Debian'
+echo ' + mises à jour de youtube-dl + ...'
+
+echo 'Mise à jour de la liste des paquets :'
+echo 'sudo apt update -y --allow-releaseinfo-change'
+sudo apt update -y --allow-releaseinfo-change
+
+echo 'Mise à jour des paquets :'
+echo 'sudo apt full-upgrade -y'
+sudo apt full-upgrade -y
+#sudo DEBIAN_FRONTEND=noninteractive apt -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" full-upgrade -y
+
+
+if ( sudo apt-cache policy gyt-dl | grep Installé ) ; then
+	if ! ( sudo apt-cache policy gyt-dl | grep Installé | grep -q aucun ) ; then
+		echo 'Mise à jour youtube-dl :'
+		echo 'sudo youtube-dl -U'
+		sudo youtube-dl -U
+	fi
+fi
+
+echo 'Fin ...'

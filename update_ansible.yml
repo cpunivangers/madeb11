@@ -1,0 +1,14 @@
+---
+
+# update ansible Debian10
+# 18/05/20 christian.pottier@univ-angers.fr
+
+- hosts: all
+  become: true
+  tasks:
+
+  - import_tasks: tasks/base_depots.yml
+
+  - import_tasks: tasks/upgrade.yml
+  
+  - import_tasks: tasks/ansible.yml
