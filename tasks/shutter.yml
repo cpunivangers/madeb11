@@ -1,0 +1,15 @@
+---
+# shutter
+
+- name: shutter | libgtk3-imageview-perl bpo
+  apt:
+    state: latest
+    name:
+    - libgtk3-imageview-perl
+    default_release: bullseye-backports
+    
+- name: shutter
+  apt:
+    state: present
+    name:
+    - shutter

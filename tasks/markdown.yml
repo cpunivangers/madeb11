@@ -1,0 +1,16 @@
+---
+# Markdown
+
+- name: Markdown | Editeur ghostwriter
+  apt:
+    state: latest
+    name:
+    - ghostwriter
+    default_release: bullseye-backports
+    
+- name: Markdown | outil pandoc
+  apt:
+    state: present
+    name:
+    - pandoc
+    - wkhtmltopdf
