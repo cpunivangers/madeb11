@@ -1,0 +1,19 @@
+---
+
+- name : Variables openboard-common
+  set_fact:
+    pkg:
+      name: openboard-common
+      url: http://packages.it-zukunft-schule.de/debian/pool/main/o/openboard/openboard-common_1.5.3+dfsg1-1~itzks2~0deb10+1_all.deb
+      vers: 1.5.3+dfsg1-1~itzks2~0deb10+1
+
+- import_tasks: url_pkg.yml
+
+- name : Variables openboard
+  set_fact:
+    pkg:
+      name: openboard
+      url: http://packages.it-zukunft-schule.de/debian/pool/main/o/openboard/openboard_1.5.3+dfsg1-1~itzks2~0deb10+1_amd64.deb
+      vers: 1.5.3+dfsg1-1~itzks2~0deb10+1
+
+- import_tasks: url_pkg.yml
