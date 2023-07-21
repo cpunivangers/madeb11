@@ -1,0 +1,8 @@
+---
+
+- name: Bureautique | ghostwriter bpo
+  apt:
+    state: latest
+    name:
+    - ghostwriter
+    default_release: bullseye-backports
