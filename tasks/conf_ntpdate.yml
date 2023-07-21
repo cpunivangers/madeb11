@@ -1,0 +1,21 @@
+---
+
+- name: test ntp installé
+  apt:
+    name: ntp
+    state: absent
+  check_mode: true
+  register: ntp_check
+
+#- name: test ntp installé
+#  shell: apt-cache policy ntp | grep Installé | grep -q aucun
+#  register: result
+#  ignore_errors: true
+#  changed_when: False
+
+- name: Configuration ntpdate si non ntp
+  replace:
+    path: /etc/default/ntpdate
+    regexp: 'NTPDATE_USE_NTP_CONF=yes'
+    replace: 'NTPDATE_USE_NTP_CONF=no'
+  when: not ntp_check.changed

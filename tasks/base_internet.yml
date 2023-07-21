@@ -1,0 +1,28 @@
+---
+
+- name: Internet
+  apt:
+    state: present
+    name:
+    # Navigateur web
+    - firefox-esr
+    - firefox-esr-l10n-fr
+    - chromium
+    - chromium-l10n
+    # Client messagerie
+    - thunderbird
+    - thunderbird-l10n-fr
+    # téléchargement audio video
+    - yt-dlp
+    # qr code wifi
+    - wifi-qr
+
+- name: Internet | Suppression Extensions Navigateur fonctionnement non fiable
+  apt:
+    state: absent
+    purge: yes
+    name:
+    - webext-ublock-origin
+    - webext-privacy-badger
+    - webext-https-everywhere
+    - webext-bulk-media-downloader
